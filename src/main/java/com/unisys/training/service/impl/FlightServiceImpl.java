@@ -31,7 +31,6 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public Flight FlightSelectOne(Flight flight) {
         return flightDao.FlightSelectOne(flight);
-
     }
 
     @Override
