@@ -21,7 +21,7 @@ public interface FlightDao {
     public int FlightUpdate(Flight flight);
 
     @Select("select * from flight where id = #{id} limit 1")
-    public Flight FlightTestSelectOne(Flight flight);
+    public Flight FlightSelectOne(Flight flight);
 
     @Select("select * from flight order by id desc limit #{whichNum},10")
     public List<Flight> FlightSelectAll(int whichNum);
