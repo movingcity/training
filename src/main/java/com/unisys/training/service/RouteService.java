@@ -1,6 +1,5 @@
 package com.unisys.training.service;
 
-import com.unisys.training.po.Flight;
 import com.unisys.training.po.Route;
 
 import java.util.List;
@@ -10,5 +9,5 @@ public interface RouteService {
     public int RouteDelete(int id);
     public int RouteUpdate(Route route);
     public Route RouteSelectOne(Route route);
-    public List<Route> RouteSelectByFlight(Flight flight);
+    public List<Route> RouteSelectByFlight(int flight_id);
 }

@@ -1,7 +1,6 @@
 package com.unisys.training.service.impl;
 
 import com.unisys.training.dao.RouteDao;
-import com.unisys.training.po.Flight;
 import com.unisys.training.po.Route;
 import com.unisys.training.service.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +34,8 @@ public class RouteServiceImpl implements RouteService{
     }
 
     @Override
-    public List<Route> RouteSelectByFlight(Flight flight) {
-                return routeDao.RouteSelectByFlight(flight);
+    public List<Route> RouteSelectByFlight(int flight_id) {
+                return routeDao.RouteSelectByFlight(flight_id);
     }
 
 }

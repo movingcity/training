@@ -6,14 +6,14 @@ import java.util.Date;
 
 public class Route {
     private int id;
-    private String airpCode;
-    private String dOrI;
+    private String airp_code;
+    private String domsintl_code;
     @JSONField(format = "yyyy-MM-dd hh:mm:ss")
-    private Date arrTime;
+    private Date arrival_date_time;
     @JSONField(format = "yyyy-MM-dd hh:mm:ss")
-    private Date depTime;
-    private int stepNum;
-    private int flightId;
+    private Date departure_date_time;
+    private int step_number;
+    private int flight_id;
 
     public int getId() {
         return id;
@@ -23,76 +23,76 @@ public class Route {
         this.id = id;
     }
 
-    public String getAirpCode() {
-        return airpCode;
+    public String getAirp_Code() {
+        return airp_code;
     }
 
-    public void setAirpCode(String airpCode) {
-        this.airpCode = airpCode;
+    public void setAirp_Code(String airp_code) {
+        this.airp_code = airp_code;
     }
 
-    public String getdOrI() {
-        return dOrI;
+    public String getDomsintl_code() {
+        return domsintl_code;
     }
 
-    public void setdOrI(String dOrI) {
-        this.dOrI = dOrI;
+    public void setDomsintl_code(String domsintl_code) {
+        this.domsintl_code = domsintl_code;
     }
 
-    public Date getArrTime() {
-        return arrTime;
+    public Date getArrival_date_time() {
+        return arrival_date_time;
     }
 
-    public void setArrTime(Date arrTime) {
-        this.arrTime = arrTime;
+    public void setArrival_date_time(Date arrival_date_time) {
+        this.arrival_date_time = arrival_date_time;
     }
 
-    public Date getDepTime() {
-        return depTime;
+    public Date getDeparture_date_time() {
+        return departure_date_time;
     }
 
-    public void setDepTime(Date depTime) {
-        this.depTime = depTime;
+    public void setDeparture_date_time(Date departure_date_time) {
+        this.departure_date_time = departure_date_time;
     }
 
-    public int getStepNum() {
-        return stepNum;
+    public int getStep_number() {
+        return step_number;
     }
 
-    public void setStepNum(int stepNum) {
-        this.stepNum = stepNum;
+    public void setStep_number(int step_number) {
+        this.step_number = step_number;
     }
 
-    public int getFlightId() {
-        return flightId;
+    public int getFlight_id() {
+        return flight_id;
     }
 
-    public void setFlightId(int flightId) {
-        this.flightId = flightId;
+    public void setFlight_id(int flight_id) {
+        this.flight_id = flight_id;
     }
 
     public Route() {
     }
 
-    public Route(String airpCode, String dOrI, Date arrTime, Date depTime, int stepNum, int flightId) {
-        this.airpCode = airpCode;
-        this.dOrI = dOrI;
-        this.arrTime = arrTime;
-        this.depTime = depTime;
-        this.stepNum = stepNum;
-        this.flightId = flightId;
+    public Route(String airp_Code, String domsintl_code, Date arrival_date_time, Date departure_date_time, int step_number, int flight_id) {
+        this.airp_code = airp_Code;
+        this.domsintl_code = domsintl_code;
+        this.arrival_date_time = arrival_date_time;
+        this.departure_date_time = departure_date_time;
+        this.step_number = step_number;
+        this.flight_id = flight_id;
     }
 
     @Override
     public String toString() {
-        return "RouteDao{" +
+        return "Route{" +
                 "id=" + id +
-                ", airpCode='" + airpCode + '\'' +
-                ", dOrI='" + dOrI + '\'' +
-                ", arrTime=" + arrTime +
-                ", depTime=" + depTime +
-                ", stepNum=" + stepNum +
-                ", flightId=" + flightId +
+                ", airp_Code='" + airp_code + '\'' +
+                ", domsintl_code='" + domsintl_code + '\'' +
+                ", arrival_date_time=" + arrival_date_time +
+                ", departure_date_time=" + departure_date_time +
+                ", step_number=" + step_number +
+                ", flight_id=" + flight_id +
                 '}';
     }
 }

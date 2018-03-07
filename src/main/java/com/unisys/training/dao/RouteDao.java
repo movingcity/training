@@ -1,6 +1,5 @@
 package com.unisys.training.dao;
 
-import com.unisys.training.po.Flight;
 import com.unisys.training.po.Route;
 import org.apache.ibatis.annotations.*;
 
@@ -24,6 +23,6 @@ public interface RouteDao {
     public Route RouteSelectOne(Route route);
 
     @Select("SELECT * FROM flight_route WHERE flight_id=#{flight_id} ORDER BY id")
-    public List<Route> RouteSelectByFlight(Flight flight);
+    public List<Route> RouteSelectByFlight(int flight_id);
 
 }
