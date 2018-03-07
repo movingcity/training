@@ -12,5 +12,5 @@ public class TrainingApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-
+ 
 }
