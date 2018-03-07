@@ -4,7 +4,7 @@ import com.unisys.training.po.Flight;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
-
+@Mapper
 public interface FlightDao {
     @Insert("INSERT INTO flight (id, airl_code, flt_number, schd_date_time, arrvdept, acfttype," +
             " flgttype, reno, domsintl, actual_date_time, estimated_date_time, user_code, terminal_code) VALUES (" +
