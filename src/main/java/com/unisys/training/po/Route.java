@@ -74,8 +74,7 @@ public class Route {
     public Route() {
     }
 
-    public Route(int id, String airpCode, String dOrI, Date arrTime, Date depTime, int stepNum, int flightId) {
-        this.id = id;
+    public Route(String airpCode, String dOrI, Date arrTime, Date depTime, int stepNum, int flightId) {
         this.airpCode = airpCode;
         this.dOrI = dOrI;
         this.arrTime = arrTime;
