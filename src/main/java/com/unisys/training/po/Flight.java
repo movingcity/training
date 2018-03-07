@@ -41,8 +41,7 @@ public class Flight {
                 '}';
     }
 
-    public Flight(int id, String airl_code, String flt_number, Date schd_date_time, String arrvdept, String acfttype, String flgttype, String reno, String domsintl, Date actual_date_time, Date estimated_date_time, String user_code, String terminal_code) {
-        this.id = id;
+    public Flight(String airl_code, String flt_number, Date schd_date_time, String arrvdept, String acfttype, String flgttype, String reno, String domsintl, Date actual_date_time, Date estimated_date_time, String user_code, String terminal_code) {
         this.airl_code = airl_code;
         this.flt_number = flt_number;
         this.schd_date_time = schd_date_time;
