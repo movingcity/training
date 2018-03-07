@@ -16,8 +16,10 @@ public interface FlightDao {
     @Delete("delete from flight where id = #{id} limit 1")
     public int FlightDelete(int id);
 
-    @Update("update flight set title=#{title}, importance = #{importance}, " +
-            "finishDate = #{finishDate} where id = #{id} limit 1")
+    @Update("UPDATE flight SET airl_code=#{airl_code}, flt_number=#{flt_number}, schd_date_time=#{schd_date_time}, " +
+            "arrvdept=#{arrvdept}, acfttype=#{acfttype}, flgttype=#{flgttype}, reno=#{reno}, domsintl=#{domsintl}, " +
+            "actual_date_time=#{actual_date_time}, estimated_date_time=#{estimated_date_time}, user_code=#{user_code}, " +
+            "terminal_code=#{terminal_code} WHERE id=#{id} limit 1")
     public int FlightUpdate(Flight flight);
 
     @Select("select * from flight where id = #{id} limit 1")
