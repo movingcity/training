@@ -6,6 +6,7 @@ import com.unisys.training.service.FlightService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 @RestController
+@Transactional
 public class FlightController {
     @Autowired
     FlightService flightService;
@@ -35,6 +37,12 @@ public class FlightController {
         String estimated_date_time = req.getParameter("estimated_date_time");
         String user_code = req.getParameter("user_code");
         String terminal_code = req.getParameter("terminal_code");
+        String dep_airp_code = req.getParameter("dep_airp_code");
+        String dep_domsintl_code = req.getParameter("dep_domsintl_code");
+        String departure_date_time = req.getParameter("departure_date_time");
+        String arr_airp_code = req.getParameter("arr_airp_code");
+        String arr_domsintl_code = req.getParameter("arr_domsintl_code");
+        String arrival_date_time = req.getParameter("arrival_date_time");
 
         Flight newFlight = null;
         try {
