@@ -1,31 +1,12 @@
-function funCalendarSelectAll() {
-
-	$.ajax({
-		type: "get",
-		url: "/calendarSelectAllFromFastJson",
-		async: true,
-		timeout: 10000,
-		data: "whichNum=" + 1,
-		dataType: "json",
-		success: function(msg) {
-			console.log(msg);
-		},
-		error: function(msg) {
-			console.log(msg);
-		}
-	});
-}
-
 $(document).ready(function() {
 	//insert
-	$("#frmCalendar").submit(function() {
-		console.log($("#frmCalendar").serialize());
+	$("#frmFlightAdd").submit(function() {
 		$.ajax({
 			type: "post",
-			url: "/calendarInsert",
+			url: "/flight/insert",
 			async: true,
 			timeout: 10000,
-			data: $("#frmCalendar").serialize(),
+			data: $("#frmFlightAdd").serialize(),
 			success: function(msg) {
 				console.log(msg);
 				if(msg = 1)
@@ -37,5 +18,4 @@ $(document).ready(function() {
 		});
 		return false;
 	})
-	funCalendarSelectAll();
 })

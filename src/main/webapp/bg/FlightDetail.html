@@ -51,47 +51,91 @@
 		</div>
 		<div class="row clearfix">
 			<div class="col-md-12 column">
-				<form role="form" id="frmCalendar" name="frmCalendar">
+				<form role="form" id="frmFlightAdd" name="frmFlightAdd">
 					<div class="form-group">
-						<label for="title">标题</label><input type="text" class="form-control" id="title" name="title" value="123" />
-					</div>
-					<div class="form-group">
-						<label for="content">内容</label><input type="text" class="form-control" id="content" value="567" name="content" />
-					</div>
-					<div class="form-group">
-						<label for="title">重要度</label>
-						<select class="form-control" id="importance" name="importance">
-							<option value="30">30</option>
-							<option value="60">60</option>
-							<option value="90" selected>90</option>
+						<label for="airl_code">航空公司</label>
+						<select class="form-control" id="airl_code" name="airl_code">
+							<option value="CA" selected>中国国际航空公司</option>
+							<option value="MU">东方航空公司</option>
+							<option value="CZ">南方航空公司</option>
+							<option value="HU">海南航空公司</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="ifOK">完成？</label>
-						<select class="form-control" id="ifOK" name="ifOK">
-							<option value="1">是</option>
-							<option value="0" selected="">否</option>
+						<label for="flt_number">航班号</label>
+						<input type="text" class="form-control" id="flt_number" name="flt_number" />
+					</div>
+					<div class="form-group">
+						<label for="schd_date_time">计划时间</label>
+						<input type="datetime-local" class="form-control" id="schd_date_time" name="schd_date_time" value="2018-12-12T12:12:12" />
+					</div>
+					<div class="form-group">
+						<label for="arrvdept">到离港标志</label>
+						<select class="form-control" id="arrvdept" name="arrvdept">
+							<option value="A" selected>到港</option>
+							<option value="D">离港</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="finishDate">完成时间</label>
-						<input type="datetime-local" class="form-control" id="finishDate" name="finishDate" value="2018-12-12T12:12:12" />
+						<label for="acfttype">飞行器类型</label>
+						<select class="form-control" id="acfttype" name="acfttype">
+							<option value="A320" selected>空客320</option>
+							<option value="A321">空客320</option>
+							<option value="733">波音733</option>
+							<option value="777">波音777</option>
+						</select>
 					</div>
 					<div class="form-group">
-						<label for="exampleInputFile">File input</label>
-						<input type="file" id="exampleInputFile" />
-						<p class="help-block">
-							Example block-level help text here.
-						</p>
+						<label for="flgttype">航班类型</label>
+						<select class="form-control" id="flgttype" name="flgttype">
+							<option value="W" selected>正班</option>
+							<option value="T">测试</option>
+							<option value="J">军用</option>
+						</select>
 					</div>
-					<div class="checkbox">
-						<label><input type="checkbox" />Check me out</label>
-					</div> <button type="submit" class="btn btn-default">Submit</button>
+					<div class="form-group">
+						<label for="reno">机尾号</label>
+						<select class="form-control" id="reno" name="reno">
+							<option value="B2644" selected>B2644</option>
+							<option value="B2645">B2645</option>
+							<option value="B2646">B2646</option>
+							<option value="B2999">B2999</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="domsintl">国内国际标识</label>
+						<select class="form-control" id="domsintl" name="domsintl">
+							<option value="D" selected>国内</option>
+							<option value="I">国际</option>
+							<option value="M">混合</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="actual_date_time">实际时间</label>
+						<input type="datetime-local" class="form-control" id="actual_date_time" name="actual_date_time" />
+					</div>
+					<div class="form-group">
+						<label for="estimated_date_time">预计时间</label>
+						<input type="datetime-local" class="form-control" id="estimated_date_time" name="estimated_date_time" />
+					</div>
+					<div class="form-group">
+						<label for="terminal_code">航站楼</label>
+						<select class="form-control" id="terminal_code" name="terminal_code">
+							<option value="T3" selected>3号航站楼</option>
+							<option value="I1">1号航站楼</option>
+							<option value="I2">2号航站楼</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="user_code">用户名</label>
+						<input type="text" class="form-control" id="user_code" name="user_code" />
+					</div>
+                    <button type="submit" class="btn btn-default">提交</button>
 				</form>
 			</div>
 		</div>
-		<script src="..\node_modules\jquery\dist\jquery.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="..\node_modules\bootstrap\dist\js\bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="../js/flightDetail.js"></script>
 	</body>
 
