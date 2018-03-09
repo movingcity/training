@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>航班管理平台</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css" />
+	</head>
+
+	<body>
+
+		<div class="container">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<nav class="navbar navbar-default" role="navigation">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+							<a class="navbar-brand" href="#"><em class="glyphicon glyphicon-plane"></em> 航班管理平台</a>
+						</div>
+
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav">
+								<li class="active">
+									<a href="#">航班维护</a>
+								</li>
+								<li>
+									<a href="#">计划导入</a>
+								</li>
+								<li>
+									<a href="#">统计报表</a>
+								</li>
+								<li class="disabled">
+									<a href="#">访问控制</a>
+								</li>
+								<li>
+									<p class="popover-options">
+										<em class="glyphicon glyphicon-qrcode">
+										</em>
+										<div id='output'></div>
+									</p>
+								</li>
+							</ul>
+
+							</ul>
+						</div>
+
+					</nav>
+
+				</div>
+
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<div class="btn-group pull-right">
+						<button class="btn btn-default" type="button">
+							<em class="glyphicon glyphicon-plus"></em> 
+							添加航班</button>
+						<button class="btn btn-default" type="button">
+								<em class="glyphicon glyphicon-minus"></em> 
+								删除航班</button>
+						<button class="btn btn-default" type="button">
+									<em class="glyphicon glyphicon-new-window"></em> 
+									详细信息</button>
+						<button class="btn btn-default" type="button" id="btnSelectAll" name="btnSelectAll">
+							查询</button>
+					</div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>
+									标题
+								</th>
+								<th>
+									内容
+								</th>
+								<th>
+									重要度
+								</th>
+								<th>
+									完成？
+								</th>
+								<th>
+									完成时间
+								</th>
+								<th colspan="2" class="text-center">
+									操作
+								</th>
+							</tr>
+						</thead>
+						<tbody id="tbodySelectAll">
+
+						</tbody>
+					</table>
+					<ul class="pagination">
+						<li>
+							<a href="#">Prev</a>
+						</li>
+						<li>
+							<a href="#">1</a>
+						</li>
+						<li>
+							<a href="#">2</a>
+						</li>
+						<li>
+							<a href="#">3</a>
+						</li>
+						<li>
+							<a href="#">4</a>
+						</li>
+						<li>
+							<a href="#">5</a>
+						</li>
+						<li>
+							<a href="#">Next</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script src="..\node_modules\jquery\dist\jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="..\node_modules\bootstrap\dist\js\bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/jquery.qrcode.min.js"></script>
+		<script type="text/javascript" src="../js/flightManage.js"></script>
+
+		<script>
+			jQuery(function() {
+
+				jQuery('#output').qrcode(window.location.href);
+			})
+		</script>
+
+	</body>
+
+</html>
