@@ -31,7 +31,7 @@ public class FlightController {
     private static final int FAILED = 0;
 
     //Static date formatter
-    private static final SimpleDateFormat date_formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+    private static final SimpleDateFormat date_formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
     private final Logger logger = LoggerFactory.getLogger(FlightController.class);
     
     @RequestMapping("/flight/insert")
