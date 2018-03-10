@@ -1,21 +1,47 @@
 package com.unisys.training.service.impl;
 
 import com.unisys.training.dao.FlightDao;
+import com.unisys.training.dao.RouteDao;
 import com.unisys.training.po.Flight;
+import com.unisys.training.po.Route;
 import com.unisys.training.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Iterator;
 import java.util.List;
 
 @Service
+@Transactional
 public class FlightServiceImpl implements FlightService {
     @Autowired
     private FlightDao flightDao;
+    @Autowired
+    private RouteDao routeDao;
 
     @Override
     public int FlightInsert(Flight flight) {
-        return flightDao.FlightInsert(flight);
+    	int result = flightDao.FlightInsert(flight);
+    	if (result == 0) {
+    		throw new RuntimeException("Flight insert failed.");
+    	}
+		if(flight.getId()<=0) {
+			throw new RuntimeException("Failed to get flight ID.");
+		}
+		
+		// insert route
+    	for(Iterator<Route> it=flight.getRoutes().iterator();it.hasNext();) {
+    		Route route = it.next();
+    		// provide flight id before insert
+    		route.setFlight_id(flight.getId());
+    		result = routeDao.RouteInsert(route);
+    		if (result == 0) {
+        		throw new RuntimeException("Flight's route insert failed.");
+        	}
+    	}
+    	
+        return result;
     }
 
     @Override

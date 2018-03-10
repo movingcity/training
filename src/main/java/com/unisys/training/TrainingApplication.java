@@ -22,10 +22,10 @@ public class TrainingApplication {
           return DataSourceBuilder.create().type(com.alibaba.druid.pool.DruidDataSource.class).build();
 	}
 
-	@Bean
-	public PlatformTransactionManager transactionManager() {
-            return new DataSourceTransactionManager(dataSource());
-	}
+    @Bean
+    public PlatformTransactionManager transactionManager() {
+	    return new DataSourceTransactionManager(dataSource());
+    }
 
 	public static void main(String[] args) {
 		SpringApplication.run(TrainingApplication.class, args);

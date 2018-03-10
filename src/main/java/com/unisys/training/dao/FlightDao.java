@@ -6,11 +6,12 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 @Mapper
 public interface FlightDao {
-    @Insert("INSERT INTO flight (id, airl_code, flt_number, schd_date_time, arrvdept, acfttype," +
+    @Insert("INSERT INTO flight (airl_code, flt_number, schd_date_time, arrvdept, acfttype," +
             " flgttype, reno, domsintl, actual_date_time, estimated_date_time, user_code, terminal_code) VALUES (" +
-            "#{id}, #{airl_code}, #{flt_number}, #{schd_date_time}, #{arrvdept}, #{acfttype}," +
+            "#{airl_code}, #{flt_number}, #{schd_date_time}, #{arrvdept}, #{acfttype}," +
             "#{flgttype}, #{reno}, #{domsintl}, #{actual_date_time}, #{estimated_date_time}, " +
             "#{user_code}, #{terminal_code})")
+    @Options(useGeneratedKeys=true, keyProperty="id")
     public int FlightInsert(Flight flight);
 
     @Delete("delete from flight where id = #{id} limit 1")

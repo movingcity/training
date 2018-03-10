@@ -2,7 +2,9 @@ package com.unisys.training.po;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Flight {
     private int id;
@@ -21,8 +23,17 @@ public class Flight {
     private Date estimated_date_time;
     private String user_code;
     private String terminal_code;
+    private List<Route> routes = new ArrayList<Route>();
 
-    @Override
+    public List<Route> getRoutes() {
+		return routes;
+	}
+
+	public void setRoutes(List<Route> routes) {
+		this.routes = routes;
+	}
+
+	@Override
     public String toString() {
         return "Flight{" +
                 "id=" + id +
@@ -38,6 +49,7 @@ public class Flight {
                 ", estimated_date_time=" + estimated_date_time +
                 ", user_code='" + user_code + '\'' +
                 ", terminal_code='" + terminal_code + '\'' +
+                ", " + routes.toString() +
                 '}';
     }
 
