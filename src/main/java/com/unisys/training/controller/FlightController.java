@@ -193,7 +193,7 @@ public class FlightController {
         String offset = req.getParameter("offset");
         String limit = req.getParameter("limit");
         logger.info(offset + limit);
-//        return JSONObject.toJSONString(flightService.FlightSelectAll(Integer.parseInt(whichPage),Integer.parseInt(limit)));
+
         int total = flightService.FlightCount();
         List<Flight> flights = flightService.FlightSelectAll(Integer.parseInt(offset), Integer.parseInt(limit));
 
@@ -202,7 +202,7 @@ public class FlightController {
         json.put("total", total);
         
         String returnString = json.toJSONString();
-        logger.debug("[flight/SelectAll] result:" + returnString);
+        logger.info("[flight/SelectAll] result:" + returnString);
         return returnString;
     }
 
