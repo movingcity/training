@@ -13,5 +13,7 @@ public interface FlightService {
 
     public Flight FlightSelectOne(Flight flight);
 
-    public List<Flight> FlightSelectAll(int whichNum);
+    public List<Flight> FlightSelectAll(int offset, int limit);
+
+    public int FlightCount();
 }

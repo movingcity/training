@@ -8,6 +8,9 @@
     <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap-table/dist/bootstrap-table.css">
+
+    <link rel="stylesheet"
+          href="../node_modules/bootstrap-table/dist/extensions/sticky-header/bootstrap-table-sticky-header.css">
 </head>
 
 <body>
@@ -109,22 +112,25 @@
         </div>
     </div>-->
 
-    <div class="row clearfix"><div class="container">
-        <div id="toolbar">
-            <button id="add" class="btn btn-normal">
-                <i class="glyphicon glyphicon-plus"></i> 添加航班
-            </button>
+    <div class="row clearfix">
+        <div class="container">
+            <div class="bootstrap-table">
+                <div id="toolbar">
+                    <button id="add" class="btn btn-normal">
+                        <i class="glyphicon glyphicon-plus"></i> 添加航班
+                    </button>
+                </div>
+                <table class="table table-hover"
+                       id="table"
+                       data-toolbar="#toolbar"
+                       data-show-columns="true"
+                       data-minimum-count-columns="2"
+                       data-id-field="id"
+                       data-show-footer="false"
+                       data-url="/flight/selectAll">
+                </table>
+            </div>
         </div>
-        <table id="table"
-               data-toolbar="#toolbar"
-               data-show-columns="true"
-               data-minimum-count-columns="2"
-               data-pagination="true"
-               data-id-field="id"
-               data-page-list="[10, 25, 50, 100, ALL]"
-               data-show-footer="false">
-        </table>
-    </div>
     </div>
 </div>
 
@@ -136,7 +142,7 @@
 <script src="../node_modules/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
 <script type="text/javascript" src="../js/jquery.qrcode.min.js"></script>
 <script type="text/javascript" src="../js/flightManage.js"></script>
-
+<script src="../node_modules/bootstrap-table/dist/extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
 <script>
     jQuery(function () {
 
