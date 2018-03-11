@@ -4,6 +4,12 @@ function queryParams(params) {
     return params
 }
 
+function funFlightInsert() {
+    window.location.href = "FlightDetail.html";
+
+
+     }
+
 function funFlightSelectAll() {
 
     var url = '/flight/selectAll';
@@ -63,6 +69,9 @@ $(document).ready(function () {
 
     $("#btnSelectAll").click(function () {
         funFlightSelectAll();
+    });
+    $("#btnAdd").click(function () {
+        funFlightInsert();
     });
     $(window).resize(function () {
         $('#table').bootstrapTable('resetView');
