@@ -25,7 +25,7 @@ public interface RouteDao {
     @Select("SELECT * FROM flight_route WHERE id = #{id} limit 1")
     public Route RouteSelectOne(Route route);
 
-    @Select("SELECT * FROM flight_route WHERE flight_id=#{flight_id} ORDER BY id")
+    @Select("SELECT * FROM flight_route WHERE flight_id=#{flight_id} ORDER BY step_number")
     public List<Route> RouteSelectByFlight(int flight_id);
 
 }

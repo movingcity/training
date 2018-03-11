@@ -61,13 +61,22 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public Flight FlightSelectOne(Flight flight) {
-        return flightDao.FlightSelectOne(flight);
+        Flight aFlight = flightDao.FlightSelectOne(flight);
+        List<Route> routes = routeDao.RouteSelectByFlight(aFlight.getId());
+    	aFlight.setRoutes(routes);
+        return aFlight;
     }
 
     @Override
     public List<Flight> FlightSelectAll(int offset, int limit) {
-        offset = offset < 1 ? 1 : offset;
-        return flightDao.FlightSelectAll(offset, limit);
+        offset = offset < 0 ? 0 : offset;
+        List<Flight> flights = flightDao.FlightSelectAll(offset, limit);
+        for(Iterator<Flight> it=flights.iterator(); it.hasNext();) {
+        	Flight aFlight = it.next();
+        	List<Route> routes = routeDao.RouteSelectByFlight(aFlight.getId());
+        	aFlight.setRoutes(routes);
+        }
+        return flights;
     }
 
     @Override

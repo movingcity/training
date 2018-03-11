@@ -4,25 +4,27 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class Flight {
     private int id;
     private String airl_code;
     private String flt_number;
-    @JSONField(format = "yyyy-MM-dd hh:mm:ss")
+    @JSONField(format = "yyyy-MM-dd hh:mm")
     private Date schd_date_time;
     private String arrvdept;
     private String acfttype;
     private String flgttype;
     private String reno;
     private String domsintl;
-    @JSONField(format = "yyyy-MM-dd hh:mm:ss")
+    @JSONField(format = "yyyy-MM-dd hh:mm")
     private Date actual_date_time;
-    @JSONField(format = "yyyy-MM-dd hh:mm:ss")
+    @JSONField(format = "yyyy-MM-dd hh:mm")
     private Date estimated_date_time;
     private String user_code;
     private String terminal_code;
+    private String fullRoute;
     private List<Route> routes = new ArrayList<Route>();
 
     public List<Route> getRoutes() {
@@ -176,4 +178,15 @@ public class Flight {
     public void setTerminal_code(String terminal_code) {
         this.terminal_code = terminal_code;
     }
+
+	public String getFullRoute() {
+		fullRoute = "";
+		for(Iterator<Route> it=routes.iterator(); it.hasNext();) {
+			fullRoute += it.next().getAirp_Code();
+			fullRoute += "-";
+		}
+		if(fullRoute.length()>0)
+			fullRoute = fullRoute.substring(0, fullRoute.length()-1);
+		return fullRoute;
+	}
 }

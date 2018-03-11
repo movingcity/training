@@ -8,9 +8,9 @@ public class Route {
     private int id;
     private String airp_code;
     private String domsintl_code;
-    @JSONField(format = "yyyy-MM-dd hh:mm:ss")
+    @JSONField(format = "yyyy-MM-dd hh:mm")
     private Date arrival_date_time;
-    @JSONField(format = "yyyy-MM-dd hh:mm:ss")
+    @JSONField(format = "yyyy-MM-dd hh:mm")
     private Date departure_date_time;
     private int step_number;
     private int flight_id;

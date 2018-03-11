@@ -48,6 +48,9 @@ function funFlightSelectAll() {
         }, {
             field: 'domsintl',
             title: '国际/国内'
+        }, {
+            field: 'fullRoute',
+            title: '航线'
         },
             {
                 field: 'operate',

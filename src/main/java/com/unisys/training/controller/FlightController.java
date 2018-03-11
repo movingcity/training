@@ -183,7 +183,9 @@ public class FlightController {
         Flight flight = new Flight();
         flight.setId(Integer.parseInt(id));
         logger.info(id);
-        return JSONObject.toJSONString(flightService.FlightSelectOne(flight));
+        String returnString = JSONObject.toJSONString(flightService.FlightSelectOne(flight));
+        logger.debug("[flight/SelectOne] result:" + returnString);
+        return returnString;
     }
 
     @RequestMapping("/flight/selectAll")
@@ -191,15 +193,17 @@ public class FlightController {
         String offset = req.getParameter("offset");
         String limit = req.getParameter("limit");
         logger.info(offset + limit);
-//        return JSONObject.toJSONString(flightService.FlightSelectAll(Integer.parseInt(whichPage),Integer.parseInt(limit)));
+
         int total = flightService.FlightCount();
         List<Flight> flights = flightService.FlightSelectAll(Integer.parseInt(offset), Integer.parseInt(limit));
 
         JSONObject json = new JSONObject(true);
         json.put("rows", flights);
         json.put("total", total);
-
-        return json.toJSONString();
+        
+        String returnString = json.toJSONString();
+        logger.info("[flight/SelectAll] result:" + returnString);
+        return returnString;
     }
 
 }
