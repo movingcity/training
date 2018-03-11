@@ -8,9 +8,10 @@
     <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap-table/dist/bootstrap-table.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.css">
     <link rel="stylesheet"
           href="../node_modules/bootstrap-table/dist/extensions/sticky-header/bootstrap-table-sticky-header.css">
+
 </head>
 
 <body>
@@ -42,17 +43,13 @@
                             <a href="#">访问控制</a>
                         </li>
                         <li>
-                            <a href="#">
-                                <p class="popover-options">
-                                    <em class="glyphicon glyphicon-qrcode"></em>
-                                    <!--<div id='output'></div>-->
-                                </p>
-                            </a>
-
+                            <a href="#" id="qrcode"><em class="glyphicon glyphicon-qrcode"></em></a>
+                            <div class="webui-popover-content">
+                                <div id='output'></div>
+                            </div>
                         </li>
                     </ul>
 
-                    </ul>
                 </div>
 
             </nav>
@@ -91,11 +88,16 @@
 <script type="text/javascript" src="../js/jquery.qrcode.min.js"></script>
 <script type="text/javascript" src="../js/flightManage.js"></script>
 <script src="../node_modules/bootstrap-table/dist/extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
 <script>
     jQuery(function () {
 
         jQuery('#output').qrcode(window.location.href);
-    })
+    });
+    $(function(){
+        $('#qrcode').webuiPopover({trigger: 'hover', animation: 'pop'});
+    });
+
 </script>
 
 </body>
