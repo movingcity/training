@@ -1,7 +1,83 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>航班管理平台</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap-table/dist/bootstrap-table.css">
+
+	<link rel="stylesheet"
+		  href="../node_modules/bootstrap-table/dist/extensions/sticky-header/bootstrap-table-sticky-header.css">
+</head>
+
+<body>
+
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target="#bs-example-navbar-collapse-1"><span
+							class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
+							class="icon-bar"></span><span class="icon-bar"></span></button>
+					<a class="navbar-brand" href="#"><em class="glyphicon glyphicon-plane"></em> 航班管理平台</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							<a href="#">航班维护</a>
+						</li>
+						<li>
+							<a href="#">计划导入</a>
+						</li>
+						<li>
+							<a href="#">统计报表</a>
+						</li>
+						<li class="disabled">
+							<a href="#">访问控制</a>
+						</li>
+						<li>
+							<a href="#">
+								<p class="popover-options">
+									<em class="glyphicon glyphicon-qrcode"></em>
+									<!--<div id='output'></div>-->
+								</p>
+							</a>
+
+						</li>
+					</ul>
+
+					</ul>
+				</div>
+
+			</nav>
+
+		</div>
+
+	</div>
+</div>
+
+<script src="../node_modules/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="../node_modules/bootstrap-table/dist/bootstrap-table.js"></script>
+
+<script src="../node_modules/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="../js/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="../js/flightManage.js"></script>
+<script src="../node_modules/bootstrap-table/dist/extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
+<script>
+    jQuery(function () {
+
+        jQuery('#output').qrcode(window.location.href);
+    })
+</script>
+
+</body>
+
 </html>
