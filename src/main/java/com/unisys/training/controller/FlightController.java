@@ -22,17 +22,15 @@ import java.util.List;
 
 @RestController
 public class FlightController {
+    private static final int SUCCEED = 1;
+    private static final int FAILED = 0;
+    //Static date formatter
+    private static final SimpleDateFormat date_formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+    private final Logger logger = LoggerFactory.getLogger(FlightController.class);
     @Autowired
     FlightService flightService;
     @Autowired
     RouteService RouteService;
-
-    private static final int SUCCEED = 1;
-    private static final int FAILED = 0;
-
-    //Static date formatter
-    private static final SimpleDateFormat date_formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-    private final Logger logger = LoggerFactory.getLogger(FlightController.class);
 
     @RequestMapping("/flight/insert")
     private Object flightInsert(HttpServletRequest req) {
@@ -51,14 +49,20 @@ public class FlightController {
                 : req.getParameter("estimated_date_time");
         String user_code = req.getParameter("user_code");
         String terminal_code = req.getParameter("terminal_code");
-        String dep_airp_code = req.getParameter("dep_airp_code");
+        String stepNum1 = req.getParameter("stepNum1");
+        String airpCode1 = req.getParameter("airpCode1");
         String dep_domsintl_code = "D";
-        String departure_date_time = req.getParameter("departure_date_time") == null ? ""
-                : req.getParameter("departure_date_time");
-        String arr_airp_code = req.getParameter("arr_airp_code");
+        String arrDateTime1 = req.getParameter("arrDateTime1") == null ? ""
+                : req.getParameter("arrDateTime1");
+        String depDateTime1 = req.getParameter("depDateTime1") == null ? ""
+                : req.getParameter("depDateTime1");
+        String stepNum2 = req.getParameter("stepNum2");
+        String airpCode2 = req.getParameter("airpCode2");
         String arr_domsintl_code = "D";
-        String arrival_date_time = req.getParameter("arrival_date_time") == null ? ""
-                : req.getParameter("arrival_date_time");
+        String arrDateTime2 = req.getParameter("arrDateTime2") == null ? ""
+                : req.getParameter("arrDateTime2");
+        String depDateTime2 = req.getParameter("depDateTime2") == null ? ""
+                : req.getParameter("depDateTime2");
 
         // prepare flight to be inserted
         Flight newFlight = null;
@@ -85,15 +89,21 @@ public class FlightController {
         Route routeDep = null;
         Route routeArr = null;
         try {
-            if (departure_date_time.contains("T")) {
-                departure_date_time = departure_date_time.replace("T", " ");
+            if (arrDateTime1.contains("T")) {
+                arrDateTime1 = arrDateTime1.replace("T", " ");
             }
-            if (arrival_date_time.contains("T")) {
-                arrival_date_time = arrival_date_time.replace("T", " ");
+            if (depDateTime1.contains("T")) {
+                depDateTime1 = depDateTime1.replace("T", " ");
             }
-            routeDep = new Route(dep_airp_code, dep_domsintl_code, null, date_formatter.parse(departure_date_time), 0,
+            if (arrDateTime2.contains("T")) {
+                arrDateTime2 = arrDateTime2.replace("T", " ");
+            }
+            if (depDateTime2.contains("T")) {
+                depDateTime2 = depDateTime2.replace("T", " ");
+            }
+            routeDep = new Route(airpCode1, dep_domsintl_code, arrDateTime1 == "" ? null :date_formatter.parse(arrDateTime1), depDateTime1 == "" ? null :date_formatter.parse(depDateTime1), Integer.parseInt(stepNum1),
                     0);
-            routeArr = new Route(arr_airp_code, arr_domsintl_code, date_formatter.parse(arrival_date_time), null, 1, 0);
+            routeArr = new Route(airpCode2, arr_domsintl_code, arrDateTime2 == "" ? null :date_formatter.parse(arrDateTime2), depDateTime2 == "" ? null :date_formatter.parse(depDateTime2), Integer.parseInt(stepNum2), 0);
             List<Route> routes = new ArrayList<Route>();
             routes.add(routeDep);
             routes.add(routeArr);
