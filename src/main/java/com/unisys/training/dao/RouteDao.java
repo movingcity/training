@@ -14,6 +14,9 @@ public interface RouteDao {
     @Delete("DELETE FROM flight_route WHERE id = #{id} limit 1")
     public int RouteDelete(int id);
 
+    @Delete("DELETE FROM flight_route WHERE flight_Id = #{flightId}")
+    public int RouteDeleteByFlightId(int flightId);
+
     @Update("UPDATE flight_route SET airp_code=#{airp_code},domsintl_code=#{domsintl_code},"+
     "arrival_date_time=#{arrival_date_time},departure_date_time=#{departure_date_time},"+
     "step_number=#{step_number} WHERE id=#{id} limit 1")

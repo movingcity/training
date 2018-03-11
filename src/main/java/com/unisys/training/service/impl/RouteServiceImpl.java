@@ -38,4 +38,9 @@ public class RouteServiceImpl implements RouteService{
                 return routeDao.RouteSelectByFlight(flight_id);
     }
 
+	@Override
+	public int RouteDeleteByFlightId(int flightId) {
+		return routeDao.RouteDeleteByFlightId(flightId);
+	}
+
 }

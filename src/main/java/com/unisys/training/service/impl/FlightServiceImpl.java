@@ -46,6 +46,11 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public int FlightDelete(int id) {
+    	int result = 0;
+    	result = routeDao.RouteDeleteByFlightId(id);
+    	if (result<=0) {
+    		throw new RuntimeException("Failed to delete flight routes.");
+    	}
         return flightDao.FlightDelete(id);
     }
 
