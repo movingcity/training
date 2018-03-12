@@ -19,9 +19,15 @@ public class FlightServiceImpl implements FlightService {
     private FlightDao flightDao;
     @Autowired
     private RouteDao routeDao;
+    
+    static final int FAILED = 0;
 
     @Override
     public int FlightInsert(Flight flight) {
+    	if(flight.getRoutes().size()<=0) {
+    		return FAILED;
+    	}
+    	
         int result = flightDao.FlightInsert(flight);
         if (result <= 0) {
             throw new RuntimeException("Flight insert failed.");
