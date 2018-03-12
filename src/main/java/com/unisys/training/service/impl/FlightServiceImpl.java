@@ -23,7 +23,7 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public int FlightInsert(Flight flight) {
         int result = flightDao.FlightInsert(flight);
-        if (result == 0) {
+        if (result <= 0) {
             throw new RuntimeException("Flight insert failed.");
         }
         if (flight.getId() <= 0) {
