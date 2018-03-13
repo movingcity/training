@@ -21,7 +21,7 @@ public class RouteController {
     private static final SimpleDateFormat date_formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
     @RequestMapping("/route/insert")
-    private Object routeInsert(HttpServletRequest req) {
+    public Object routeInsert(HttpServletRequest req) {
         String airpCode = req.getParameter("airp_code");
         String dOrI = req.getParameter("domsintl_code");
         String arrTime = req.getParameter("arrival_date_time");
@@ -51,7 +51,7 @@ public class RouteController {
     }
 
     @RequestMapping("/route/update")
-    private Object routeUpdate(HttpServletRequest req) {
+    public Object routeUpdate(HttpServletRequest req) {
         String id = req.getParameter("id");
         String airpCode = req.getParameter("airp_code");
         String dOrI = req.getParameter("domsintl_code");
@@ -83,13 +83,13 @@ public class RouteController {
     }
 
     @RequestMapping("/route/deleteById")
-    private Object routeDelete(HttpServletRequest req) {
+    public Object routeDelete(HttpServletRequest req) {
         String id = req.getParameter("id");
         return routeService.RouteDelete(Integer.parseInt(id));
     }
 
     @RequestMapping("/route/selectOne")
-    private Object routeSelectOne(HttpServletRequest req) {
+    public Object routeSelectOne(HttpServletRequest req) {
         String id = req.getParameter("id");
         Route route = new Route();
         route.setId(Integer.parseInt(id));
@@ -97,7 +97,7 @@ public class RouteController {
     }
 
     @RequestMapping("/route/selectByFlight")
-    private Object routeSelectByFlight(HttpServletRequest req) {
+    public Object routeSelectByFlight(HttpServletRequest req) {
         String flightId = req.getParameter("flight_id");
         return JSONObject.toJSONString(routeService.RouteSelectByFlight(Integer.parseInt(flightId)));
     }

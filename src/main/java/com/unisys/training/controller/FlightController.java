@@ -33,7 +33,7 @@ public class FlightController {
     RouteService RouteService;
 
     @RequestMapping("/flight/insert")
-    private Object flightInsert(HttpServletRequest req) {
+    public Object flightInsert(HttpServletRequest req) {
         int result = 0;
         String airl_code = req.getParameter("airl_code");
         String flt_number = req.getParameter("flt_number");
@@ -128,7 +128,7 @@ public class FlightController {
     }
 
     @RequestMapping("/flight/update")
-    private Object flightUpdate(HttpServletRequest req) {
+    public Object flightUpdate(HttpServletRequest req) {
         String id = req.getParameter("id");
         String airl_code = req.getParameter("airl_code");
         String flt_number = req.getParameter("flt_number");
@@ -172,13 +172,13 @@ public class FlightController {
     }
 
     @RequestMapping("/flight/deleteById")
-    private Object flightDeleteById(HttpServletRequest req) {
+    public Object flightDeleteById(HttpServletRequest req) {
         String id = req.getParameter("id");
         return flightService.FlightDelete(Integer.parseInt(id));
     }
 
     @RequestMapping("/flight/selectOne")
-    private Object flightSelectOne(HttpServletRequest req) {
+    public Object flightSelectOne(HttpServletRequest req) {
         String id = req.getParameter("id");
         Flight flight = new Flight();
         flight.setId(Integer.parseInt(id));
@@ -189,11 +189,11 @@ public class FlightController {
     }
 
     @RequestMapping("/flight/selectAll")
-    private Object flightSelectAll(HttpServletRequest req) {
+    public Object flightSelectAll(HttpServletRequest req) {
         String offset = req.getParameter("offset");
         String limit = req.getParameter("limit");
-        logger.info(offset + limit);
-
+        
+        logger.info(offset + " " + limit);
         int total = flightService.FlightCount();
         List<Flight> flights = flightService.FlightSelectAll(Integer.parseInt(offset), Integer.parseInt(limit));
 
