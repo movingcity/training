@@ -20,6 +20,10 @@ public class PasswordHelper {
 	private String algorithmName = "md5";
 	private final int hashIterations = 2;
 
+	/**
+	 * Add encrypted password and salt to the user object
+	 * @param user - user with new password and salt
+	 */
 	public void encryptPassword(User user) {
 		user.setSalt(randomNumberGenerator.nextBytes().toHex());
 		String newPassword = new SimpleHash(algorithmName, user.getPassword(),

@@ -10,11 +10,15 @@ import java.io.Serializable;
  *
  */
 public class User implements Serializable {
+	/**
+	 * default UID
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Long id;
     private String username;
     private String password;
     private String salt;
-
     private Boolean locked = Boolean.FALSE;
 
     public User() {
