@@ -11,7 +11,7 @@
  Target Server Version : 100213
  File Encoding         : 65001
 
- Date: 12/03/2018 20:15:49
+ Date: 15/03/2018 22:08:45
 */
 
 SET NAMES utf8mb4;
@@ -86,5 +86,107 @@ INSERT INTO `flight_route` VALUES (15, 'CTU', 'D', NULL, '2018-03-11 08:11:00', 
 INSERT INTO `flight_route` VALUES (16, 'PEK', 'D', '2018-03-11 00:11:00', NULL, 1, 8);
 INSERT INTO `flight_route` VALUES (17, 'CTU', 'D', NULL, '2018-03-12 05:30:00', 1, 9);
 INSERT INTO `flight_route` VALUES (18, 'PEK', 'D', '2018-03-12 10:00:00', NULL, 2, 9);
+
+-- ----------------------------
+-- Table structure for sys_permissions
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_permissions`;
+CREATE TABLE `sys_permissions`  (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `permission` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `description` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `available` tinyint(1) NULL DEFAULT 0,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `idx_sys_permissions_permission`(`permission`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_permissions
+-- ----------------------------
+INSERT INTO `sys_permissions` VALUES (1, 'flight:view', 'flight view permission', 1);
+
+-- ----------------------------
+-- Table structure for sys_roles
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_roles`;
+CREATE TABLE `sys_roles`  (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `role` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `description` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `available` tinyint(1) NULL DEFAULT 0,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `idx_sys_roles_role`(`role`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_roles
+-- ----------------------------
+INSERT INTO `sys_roles` VALUES (1, 'admin', 'admin', 1);
+
+-- ----------------------------
+-- Table structure for sys_roles_permissions
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_roles_permissions`;
+CREATE TABLE `sys_roles_permissions`  (
+  `role_id` bigint(20) NOT NULL,
+  `permission_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`role_id`, `permission_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_roles_permissions
+-- ----------------------------
+INSERT INTO `sys_roles_permissions` VALUES (1, 1);
+
+-- ----------------------------
+-- Table structure for sys_users
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_users`;
+CREATE TABLE `sys_users`  (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `username` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `salt` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `locked` tinyint(1) NULL DEFAULT 0,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `idx_sys_users_username`(`username`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_users
+-- ----------------------------
+INSERT INTO `sys_users` VALUES (1, 'hyn', '6eaf83f3e94b401211776728a8618e19', '65943e1a547c0dfdda75925e30871cb8', 0);
+
+-- ----------------------------
+-- Table structure for sys_users_roles
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_users_roles`;
+CREATE TABLE `sys_users_roles`  (
+  `user_id` bigint(20) NOT NULL,
+  `role_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`user_id`, `role_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_users_roles
+-- ----------------------------
+INSERT INTO `sys_users_roles` VALUES (1, 1);
+
+-- ----------------------------
+-- View structure for view_users_permissions
+-- ----------------------------
+DROP VIEW IF EXISTS `view_users_permissions`;
+CREATE ALGORITHM = UNDEFINED DEFINER = `root`@`localhost` SQL SECURITY DEFINER VIEW `view_users_permissions` AS SELECT
+sys_users.id,
+sys_users.username,
+sys_users.locked,
+sys_permissions.permission,
+sys_permissions.available,
+sys_permissions.description
+FROM
+sys_users
+INNER JOIN sys_users_roles ON sys_users.id = sys_users_roles.user_id
+INNER JOIN sys_roles_permissions ON sys_users_roles.role_id = sys_roles_permissions.role_id
+INNER JOIN sys_permissions ON sys_permissions.id = sys_roles_permissions.permission_id ;
 
 SET FOREIGN_KEY_CHECKS = 1;
