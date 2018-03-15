@@ -19,16 +19,16 @@ $(document).ready(function () {
                     window.location.href="/bg/index.html";
                     var lStorage = window.localStorage;
                     lStorage.setItem("username",$("#username").val());
-                    alert("登录成功 " + $("#username").val());
+                   // alert("登录成功 " + $("#username").val());
                 }
             },
             error: function (msg) {
                 console.log(msg);
-
-                window.location.href="/bg/index.html";
-                var lStorage = window.localStorage;
-                lStorage.setItem("username",$("#username").val());
-                alert("登录成功 " + $("#username").val());
+                //
+                // window.location.href="/bg/index.html";
+                // var lStorage = window.localStorage;
+                // lStorage.setItem("username",$("#username").val());
+                alert("登录时发生错误 " + msg.responseJSON.message );
             }
         });
 
