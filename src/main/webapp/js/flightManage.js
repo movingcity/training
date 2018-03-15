@@ -5,8 +5,9 @@ function queryParams(params) {
 }
 
 function funFlightInsert() {
+	var lStorage = window.localStorage;
+    lStorage.removeItem("flightID");
     window.location.href = "FlightDetail.html";
-
 
      }
 
