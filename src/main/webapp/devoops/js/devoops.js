@@ -1303,10 +1303,10 @@ function DrawKnob(elem){
 		},
 		release : function (value) {
 			//console.log(this.$.attr('value'));
-			console.log("release : " + value);
+			//console.log("release : " + value);
 		},
 		cancel : function () {
-			console.log("cancel : ", this);
+			//console.log("cancel : ", this);
 		},
 		draw : function () {
 			// "tron" case
