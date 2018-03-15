@@ -92,7 +92,9 @@ function operateFormatter(value, row, index) {
 
 window.operateEvents = {
     'click .detail': function (e, value, row, index) {
-        window.location.href = "FlightDetail.html?id=" + row.id;
+    	var lStorage = window.localStorage;
+    	lStorage.setItem("flightID", row.id);
+        window.location.href = "FlightDetail.html";    
     },
     'click .remove': function (e, value, row, index) {
 
