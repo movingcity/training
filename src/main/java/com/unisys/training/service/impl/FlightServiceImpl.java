@@ -5,7 +5,10 @@ import com.unisys.training.dao.RouteDao;
 import com.unisys.training.po.Flight;
 import com.unisys.training.po.Route;
 import com.unisys.training.service.FlightService;
+
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +26,7 @@ public class FlightServiceImpl implements FlightService {
     static final int FAILED = 0;
 
     @Override
+	@RequiresPermissions("flight:maintain")
     public int FlightInsert(Flight flight) {
     	if(flight.getRoutes().size()<=0) {
     		return FAILED;
@@ -51,6 +55,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
+	@RequiresPermissions("flight:maintain")
     public int FlightDelete(int id) {
     	int result = 0;
     	result = routeDao.RouteDeleteByFlightId(id);
@@ -61,11 +66,13 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
+	@RequiresPermissions("flight:maintain")
     public int FlightUpdate(Flight flight) {
         return flightDao.FlightUpdate(flight);
     }
 
     @Override
+	@RequiresPermissions("flight:view")
     public Flight FlightSelectOne(Flight flight) {
         Flight aFlight = flightDao.FlightSelectOne(flight);
         List<Route> routes = routeDao.RouteSelectByFlight(aFlight.getId());
@@ -74,6 +81,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
+	@RequiresPermissions("flight:view")
     public List<Flight> FlightSelectAll(int offset, int limit) {
         offset = offset < 0 ? 0 : offset;
         List<Flight> flights = flightDao.FlightSelectAll(offset, limit);
@@ -86,6 +94,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
+	@RequiresPermissions("flight:view")
     public int FlightCount() {
         return flightDao.FlightCount();
     }
