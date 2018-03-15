@@ -11,6 +11,7 @@ import com.unisys.training.security.po.Role;
  */
 public interface RoleService {
 	public Role createRole(Role role);
+	public Role updateRole(Role role);
 
 	public void deleteRole(Long roleId);
 
