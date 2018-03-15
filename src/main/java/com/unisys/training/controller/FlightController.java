@@ -6,6 +6,7 @@ import com.unisys.training.po.Route;
 import com.unisys.training.service.FlightService;
 import com.unisys.training.service.RouteService;
 
+import org.apache.shiro.authz.UnauthorizedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,9 @@ import java.util.List;
 
 @RestController
 public class FlightController {
-    private static final int SUCCEED = 1;
-    private static final int FAILED = 0;
+    private static final Integer SUCCEED = 1;
+    private static final Integer FAILED = 0;
+    private static final Integer UNAUTH = 2;
     //Static date formatter
     private static final SimpleDateFormat date_formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
     private final Logger logger = LoggerFactory.getLogger(FlightController.class);
@@ -194,8 +196,16 @@ public class FlightController {
         String limit = req.getParameter("limit");
         
         logger.info(offset + " " + limit);
-        int total = flightService.FlightCount();
-        List<Flight> flights = flightService.FlightSelectAll(Integer.parseInt(offset), Integer.parseInt(limit));
+        int total = 0;
+        List<Flight> flights = new ArrayList<Flight>();
+        try {
+        	total = flightService.FlightCount();
+        	flights = flightService.FlightSelectAll(Integer.parseInt(offset), Integer.parseInt(limit));
+        } catch(UnauthorizedException ex) {
+        	return UNAUTH;
+        } catch(Exception ex) {
+        	return FAILED;
+        }
 
         JSONObject json = new JSONObject(true);
         json.put("rows", flights);
