@@ -5,11 +5,11 @@ function queryParams(params) {
 }
 
 function funFlightInsert() {
-	var lStorage = window.localStorage;
+    var lStorage = window.localStorage;
     lStorage.removeItem("flightID");
     window.location.href = "FlightDetail.html";
 
-     }
+}
 
 function funFlightSelectAll() {
 
@@ -31,6 +31,7 @@ function funFlightSelectAll() {
         minimumCountColumns: 2,
         clickToSelect: true,
         smartDisplay: true,
+        responseHandler: responseHandler,
         formatNoMatches: function () {
             return '无符合条件的记录';
         },
@@ -64,6 +65,13 @@ function funFlightSelectAll() {
 
 }
 
+function responseHandler(res) {
+    if (res === 2) {
+        alert('对不起，您没有进行该内容的权限');
+    }
+
+}
+
 $(document).ready(function () {
     //Select all at page loaded
     funFlightSelectAll();
@@ -93,9 +101,9 @@ function operateFormatter(value, row, index) {
 
 window.operateEvents = {
     'click .detail': function (e, value, row, index) {
-    	var lStorage = window.localStorage;
-    	lStorage.setItem("flightID", row.id);
-        window.location.href = "FlightDetail.html";    
+        var lStorage = window.localStorage;
+        lStorage.setItem("flightID", row.id);
+        window.location.href = "FlightDetail.html";
     },
     'click .remove': function (e, value, row, index) {
 
