@@ -43,7 +43,7 @@
 								</div>
 							</li>
 							<li>
-								<a href="#" id="username"></a>
+                                <a href="/logout" id="username"></a>
 							</li>
 						</ul>
 
@@ -100,6 +100,6 @@
 			});
 		});
         var lStorage = window.localStorage;
-        $("#username").html("当前用户： " + lStorage.getItem("username"));
+        $("#username").html(lStorage.getItem("username") + " 注销");
 	</script>
 </body>
