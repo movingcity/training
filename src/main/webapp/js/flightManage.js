@@ -67,8 +67,9 @@ function funFlightSelectAll() {
 
 function responseHandler(res) {
     if (res === 2) {
-        alert('对不起，您没有进行该内容的权限');
+        alert('对不起，您没有查看该内容的权限');
     }
+    return res;
 
 }
 
