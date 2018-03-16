@@ -134,19 +134,30 @@ public class FlightController {
         String id = req.getParameter("id");
         String airl_code = req.getParameter("airl_code");
         String flt_number = req.getParameter("flt_number");
-        String schd_date_time = req.getParameter("schd_date_time");
+        String schd_date_time = req.getParameter("schd_date_time") == null ? "" : req.getParameter("schd_date_time");
         String arrvdept = req.getParameter("arrvdept");
         String acfttype = req.getParameter("acfttype");
         String flgttype = req.getParameter("flgttype");
         String reno = req.getParameter("reno");
         String domsintl = req.getParameter("domsintl");
-        String actual_date_time = req.getParameter("actual_date_time");
-        String estimated_date_time = req.getParameter("estimated_date_time");
+        String actual_date_time = req.getParameter("actual_date_time") == null ? ""
+                : req.getParameter("actual_date_time");
+        String estimated_date_time = req.getParameter("estimated_date_time") == null ? ""
+                : req.getParameter("estimated_date_time");
         String user_code = req.getParameter("user_code");
         String terminal_code = req.getParameter("terminal_code");
 
         Flight updFlight = null;
         try {
+            if (schd_date_time.contains("T")) {
+                schd_date_time = schd_date_time.replace("T", " ");
+            }
+            if (actual_date_time.contains("T")) {
+                actual_date_time = actual_date_time.replace("T", " ");
+            }
+            if (estimated_date_time.contains("T")) {
+                estimated_date_time = estimated_date_time.replace("T", " ");
+            }
             updFlight = new Flight(
                     airl_code,
                     flt_number,
@@ -156,8 +167,8 @@ public class FlightController {
                     flgttype,
                     reno,
                     domsintl,
-                    actual_date_time == null ? null : date_formatter.parse(actual_date_time),
-                    estimated_date_time == null ? null : date_formatter.parse(estimated_date_time),
+                    actual_date_time == "" ? null : date_formatter.parse(actual_date_time),
+                    estimated_date_time == "" ? null : date_formatter.parse(estimated_date_time),
                     user_code,
                     terminal_code
             );

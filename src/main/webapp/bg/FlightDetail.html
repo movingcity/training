@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.css">
 
 	</head>
 
@@ -17,8 +17,7 @@
 				<div class="col-md-12 column">
 					<nav class="navbar navbar-default" role="navigation">
 						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse"
-									data-target="#bs-example-navbar-collapse-1"><span
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><span
 									class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
 									class="icon-bar"></span><span class="icon-bar"></span></button>
 							<a class="navbar-brand" href="/bg/index.html"><em class="glyphicon glyphicon-plane"></em> 航班管理平台</a>
@@ -45,7 +44,7 @@
 									</div>
 								</li>
 								<li>
-                                    <a href="/logout" id="username"></a>
+									<a href="/logout" id="username"></a>
 								</li>
 							</ul>
 
@@ -56,207 +55,212 @@
 
 			</div>
 
-		</div>
-		<div class="row clearfix">
-			<div class="col-md-12 column">
-				<form role="form" id="frmFlightAdd" name="frmFlightAdd">
-					<div class="col-md-6 column">
-						<div class="form-group">
-							<label for="airl_code">航空公司</label>
-							<select class="form-control" id="airl_code" name="airl_code">
-								<option value="CA" selected>中国国际航空公司</option>
-								<option value="MU">东方航空公司</option>
-								<option value="CZ">南方航空公司</option>
-								<option value="HU">海南航空公司</option>
-							</select>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<form role="form" id="frmFlightAdd" name="frmFlightAdd">
+						<div class="col-md-6 column">
+							<div class="form-group">
+								<label for="airl_code">航空公司</label>
+								<select class="form-control" id="airl_code" name="airl_code">
+									<option value="CA" selected>中国国际航空公司</option>
+									<option value="MU">东方航空公司</option>
+									<option value="CZ">南方航空公司</option>
+									<option value="HU">海南航空公司</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="flt_number">航班号</label>
+								<input type="text" class="form-control" id="flt_number" name="flt_number" />
+							</div>
+							<div class="form-group">
+								<label for="schd_date_time">计划时间</label>
+								<input type="datetime-local" class="form-control" id="schd_date_time" name="schd_date_time" value="2018-03-11T12:12" />
+							</div>
+							<div class="form-group">
+								<label for="arrvdept">到离港标志</label>
+								<select class="form-control" id="arrvdept" name="arrvdept">
+									<option value="A" selected>到港</option>
+									<option value="D">离港</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="acfttype">飞行器类型</label>
+								<select class="form-control" id="acfttype" name="acfttype">
+									<option value="320" selected>空客320</option>
+									<option value="A320" selected>空客320</option>
+									<option value="321">空客320</option>
+									<option value="733">波音733</option>
+									<option value="777">波音777</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="flgttype">航班类型</label>
+								<select class="form-control" id="flgttype" name="flgttype">
+									<option value="W" selected>正班</option>
+									<option value="T">测试</option>
+									<option value="J">军用</option>
+								</select>
+							</div>
 						</div>
-						<div class="form-group">
-							<label for="flt_number">航班号</label>
-							<input type="text" class="form-control" id="flt_number" name="flt_number" />
+						<div class="col-md-6 column">
+							<div class="form-group">
+								<label for="reno">机尾号</label>
+								<select class="form-control" id="reno" name="reno">
+									<option value="B2644" selected>B2644</option>
+									<option value="B2645">B2645</option>
+									<option value="B2646">B2646</option>
+									<option value="B2999">B2999</option>
+									<option value="B2288">B2288</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="domsintl">国内国际标识</label>
+								<select class="form-control" id="domsintl" name="domsintl">
+									<option value="D" selected>国内</option>
+									<option value="I">国际</option>
+									<option value="M">混合</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="actual_date_time">实际时间</label>
+								<input type="datetime-local" class="form-control" id="actual_date_time" name="actual_date_time" />
+							</div>
+							<div class="form-group">
+								<label for="estimated_date_time">预计时间</label>
+								<input type="datetime-local" class="form-control" id="estimated_date_time" name="estimated_date_time" />
+							</div>
+							<div class="form-group">
+								<label for="terminal_code">航站楼</label>
+								<select class="form-control" id="terminal_code" name="terminal_code">
+									<option value="T3" selected>3号航站楼</option>
+									<option value="I1">1号航站楼</option>
+									<option value="I2">2号航站楼</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="user_code">用户名</label>
+								<input type="text" class="form-control" id="user_code" name="user_code" />
+							</div>
 						</div>
-						<div class="form-group">
-							<label for="schd_date_time">计划时间</label>
-							<input type="datetime-local" class="form-control" id="schd_date_time" name="schd_date_time" value="2018-03-11T12:12" />
+						<div class="row clearfix">
+							<div class="col-md-5 column">
+							</div>
+							<div class="col-md-7 column">
+								<label>航线信息细节维护</label>
+							</div>
 						</div>
-						<div class="form-group">
-							<label for="arrvdept">到离港标志</label>
-							<select class="form-control" id="arrvdept" name="arrvdept">
-								<option value="A" selected>到港</option>
-								<option value="D">离港</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="acfttype">飞行器类型</label>
-							<select class="form-control" id="acfttype" name="acfttype">
-								<option value="320" selected>空客320</option>
-								<option value="321">空客320</option>
-								<option value="733">波音733</option>
-								<option value="777">波音777</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="flgttype">航班类型</label>
-							<select class="form-control" id="flgttype" name="flgttype">
-								<option value="W" selected>正班</option>
-								<option value="T">测试</option>
-								<option value="J">军用</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-md-6 column">
-						<div class="form-group">
-							<label for="reno">机尾号</label>
-							<select class="form-control" id="reno" name="reno">
-								<option value="B2644" selected>B2644</option>
-								<option value="B2645">B2645</option>
-								<option value="B2646">B2646</option>
-								<option value="B2999">B2999</option>
-								<option value="B2288">B2288</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="domsintl">国内国际标识</label>
-							<select class="form-control" id="domsintl" name="domsintl">
-								<option value="D" selected>国内</option>
-								<option value="I">国际</option>
-								<option value="M">混合</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="actual_date_time">实际时间</label>
-							<input type="datetime-local" class="form-control" id="actual_date_time" name="actual_date_time" />
-						</div>
-						<div class="form-group">
-							<label for="estimated_date_time">预计时间</label>
-							<input type="datetime-local" class="form-control" id="estimated_date_time" name="estimated_date_time" />
-						</div>
-						<div class="form-group">
-							<label for="terminal_code">航站楼</label>
-							<select class="form-control" id="terminal_code" name="terminal_code">
-								<option value="T3" selected>3号航站楼</option>
-								<option value="I1">1号航站楼</option>
-								<option value="I2">2号航站楼</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="user_code">用户名</label>
-							<input type="text" class="form-control" id="user_code" name="user_code" />
-						</div>
-					</div>
-					<div class="row clearfix">
-						<div class="col-md-5 column">
-						</div>
-						<div class="col-md-7 column">
-							<label>航线信息细节维护</label>
-						</div>
-					</div>
-					<div class="row clearfix">
-						<div class="col-md-12 column">
-							<table class="table">
-								<thead>
-									<tr>
-										<th>
-											航线序号
-										</th>
-										<th>
-											机场
-										</th>
-										<th>
-											到港时间
-										</th>
-										<th>
-											离港时间
-										</th>
-										<th>
-											删除复选
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr class="success">
-										<td>
-											<input type="text" class="form-control" id="stepNum1" name="stepNum1" value="1" />
-										</td>
-										<td>
-											<select class="form-control" id="airpCode1" name="airpCode1">
-												<option value="PEK" selected>北京首都国际机场</option>
-												<option value="CTU">成都双流国际机场</option>
-												<option value="CAN">广州新白云国际机场</option>
-												<option value="SHA">上海虹桥机场</option>
-												<option value="LAA">LAA机场</option>
-											</select>
-										</td>
-										<td>
-											<input type="datetime-local" class="form-control" id="arrDateTime1" name="arrDateTime1" />
-										</td>
-										<td>
-											<input type="datetime-local" class="form-control" id="depDateTime1" name="depDateTime1" />
-										</td>
-										<td class="checkbox">
-											<label><input type="checkbox" /></label>
+						<div class="row clearfix">
+							<div class="col-md-12 column">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>
+												航线序号
+											</th>
+											<th>
+												机场
+											</th>
+											<th>
+												到港时间
+											</th>
+											<th>
+												离港时间
+											</th>
+											<th>
+												删除复选
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="success">
 											<td>
-									</tr>
-									<tr class="success">
-										<td>
-											<input type="text" class="form-control" id="stepNum2" name="stepNum2" value="2" />
-										</td>
-										<td>
-											<select class="form-control" id="airpCode2" name="airpCode2">
-												<option value="PEK">北京首都国际机场</option>
-												<option value="CTU" selected>成都双流国际机场</option>
-												<option value="CAN">广州新白云国际机场</option>
-												<option value="SHA">上海虹桥机场</option>
-												<option value="LAA">LAA机场</option>
-											</select>
-										</td>
-										<td>
-											<input type="datetime-local" class="form-control" id="arrDateTime2" name="arrDateTime2" />
-										</td>
-										<td>
-											<input type="datetime-local" class="form-control" id="depDateTime2" name="depDateTime2" />
-										</td>
-										<td class="checkbox">
-											<label><input type="checkbox" /></label>
+												<input type="text" class="form-control" id="stepNum1" name="stepNum1" value="1" />
+											</td>
 											<td>
-									</tr>
-								</tbody>
-								<button type="button" class="btn btn-default">+</button>
-								<button type="button" class="btn btn-default">-</button>
-							</table>
+												<select class="form-control" id="airpCode1" name="airpCode1">
+													<option value="PEK" selected>北京首都国际机场</option>
+													<option value="CTU">成都双流国际机场</option>
+													<option value="CAN">广州新白云国际机场</option>
+													<option value="SHA">上海虹桥机场</option>
+													<option value="LAA">LAA机场</option>
+												</select>
+											</td>
+											<td>
+												<input type="datetime-local" class="form-control" id="arrDateTime1" name="arrDateTime1" />
+											</td>
+											<td>
+												<input type="datetime-local" class="form-control" id="depDateTime1" name="depDateTime1" />
+											</td>
+											<td class="checkbox">
+												<label><input type="checkbox" /></label>
+												<td>
+										</tr>
+										<tr class="success">
+											<td>
+												<input type="text" class="form-control" id="stepNum2" name="stepNum2" value="2" />
+											</td>
+											<td>
+												<select class="form-control" id="airpCode2" name="airpCode2">
+													<option value="PEK">北京首都国际机场</option>
+													<option value="CTU" selected>成都双流国际机场</option>
+													<option value="CAN">广州新白云国际机场</option>
+													<option value="SHA">上海虹桥机场</option>
+													<option value="LAA">LAA机场</option>
+												</select>
+											</td>
+											<td>
+												<input type="datetime-local" class="form-control" id="arrDateTime2" name="arrDateTime2" />
+											</td>
+											<td>
+												<input type="datetime-local" class="form-control" id="depDateTime2" name="depDateTime2" />
+											</td>
+											<td class="checkbox">
+												<label><input type="checkbox" /></label>
+												<td>
+										</tr>
+									</tbody>
+									<button type="button" class="btn btn-default">+</button>
+									<button type="button" class="btn btn-default">-</button>
+								</table>
+								<button type="submit" class="btn btn-default">提交</button>
+							</div>
 						</div>
-					</div>
-					<button type="submit" class="btn btn-default">提交</button>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
-        <footer class="navbar-default navbar-fixed-bottom">
-            <div class="container-fluid">
-                <p class="footer">
-                    &copy; Copyright 2018 - Unisys - All Rights Reserved
-                </p>
-            </div>
-        </footer>
-        <script src="../node_modules/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--footer class="navbar-default navbar-fixed-bottom"-->
+			<footer class="navbar-default
+			<div class="container-fluid">
+				<p class="footer">
+					&copy; Copyright 2018 - Unisys - All Rights Reserved
+				</p>
+			</div>
+		</footer>
+		<script src="../node_modules/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 
-        <script src="../node_modules/bootstrap-table/dist/bootstrap-table.js"></script>
+		<script src="../node_modules/bootstrap-table/dist/bootstrap-table.js"></script>
 
-        <script src="../node_modules/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
-        <script type="text/javascript" src="../js/jquery.qrcode.min.js"></script>
-        <script type="text/javascript" src="../js/flightDetail.js"></script>
-        <script src="../node_modules/bootstrap-table/dist/extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
-        <script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
-        <script>
-            jQuery(function () {
+		<script src="../node_modules/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
+		<script type="text/javascript" src="../js/jquery.qrcode.min.js"></script>
+		<script type="text/javascript" src="../js/flightDetail.js"></script>
+		<script src="../node_modules/bootstrap-table/dist/extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
+		<script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
+		<script>
+			jQuery(function() {
 
-                jQuery('#output').qrcode(window.location.href);
-            });
-            $(function(){
-                $('#qrcode').webuiPopover({trigger: 'hover', animation: 'pop'});
-            });
-            var lStorage = window.localStorage;
-            $("#username").html(lStorage.getItem("username") + " 注销");
-        </script>
+				jQuery('#output').qrcode(window.location.href);
+			});
+			$(function() {
+				$('#qrcode').webuiPopover({
+					trigger: 'hover',
+					animation: 'pop'
+				});
+			});
+			var lStorage = window.localStorage;
+			$("#username").html(lStorage.getItem("username") + " 注销");
+		</script>
 
 	</body>
 
